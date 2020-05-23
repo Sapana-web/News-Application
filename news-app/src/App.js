@@ -5,7 +5,7 @@ import News from './components/news/News';
 function App() {
   return (
     <div className="App">
-     <News></News>
+     <News />
     </div>
   );
 }
