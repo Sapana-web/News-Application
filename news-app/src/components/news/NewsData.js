@@ -9,6 +9,7 @@ class NewsData extends Component {
             searchWord: ''
         }
     }
+
     componentWillReceiveProps(nextProps) {
         const { list } = nextProps;    
         this.setState({news: list})
@@ -17,7 +18,7 @@ class NewsData extends Component {
     getCardElements = (news) => {
         return news.map((newsItem, index) => {
             return (
-                <div className="row card mb-10" style={{ marginTop: '80px' }}>                           
+                <div className="row card mb-10" style={{ marginTop: '80px' } } key={index}>                           
                 <div className="row col-12 card-body bg-light">
                      <div className="col-3">
                     <img src={newsItem.imgSrc} className="mx-auto d-block" alt="Cinque Terre" />
@@ -49,7 +50,6 @@ class NewsData extends Component {
                     </table>
                 </div>
                </React.Fragment>
-
         );           
     }
 }

@@ -11,13 +11,11 @@ export default class News extends Component {
         };
         }
 
-        getNewsData() {
+    getNewsData() {
             axios
                 .get('',{})
                 .then(res => {
-                    console.log(res.data)
                     const data = res.data.value
-                    // data.map(newsItems => this.addNewsDetails(newsItems))
                     this.setNewsDetails(data)
                     })
                 .catch((error) => {
@@ -25,11 +23,9 @@ export default class News extends Component {
                 })
         }
 
-        componentDidMount(){
-            this.getNewsData()
-        }
+    componentDidMount(){this.getNewsData()}
 
-        setNewsDetails = (newsData) => {
+    setNewsDetails = (newsData) => {
             let newsListArray = [];
             for(let i=0; i< newsData.length;i++){
                 let tempObj = {
@@ -44,7 +40,7 @@ export default class News extends Component {
             this.setState({ news: newsListArray })    
         }
     
-        render() {
+    render() {
             return (
                 <div>
                 <NewsList list={this.state.news} />                  

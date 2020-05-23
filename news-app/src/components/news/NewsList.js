@@ -14,7 +14,10 @@ export default class NewsList extends Component {
             pageCount: 3
         };
         this.handlePageChange.bind(this);
+        this.inputRef= React.createRef();
         }       
+
+    componentDidMount(){this.inputRef.current.focus();}
  
     componentWillReceiveProps(nextProps) {
             const { list } = nextProps; 
@@ -49,17 +52,15 @@ export default class NewsList extends Component {
             activePage: pageNumber
         })
       }
-
-  
+ 
 
     render() {
         return (
         <div>
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
               <form className="form-inline" action="/action_page.php">
-              <h2 className="navbar-brand">News Application</h2>
-            
-                <input className="form-control mr-sm-2" type="text" placeholder="Search news.." onChange={this.searchTaskByVal}/>
+              <h2 className="navbar-brand">News Application</h2>            
+                <input className="form-control mr-sm-2" type="text" placeholder="Search news.." ref = {this.inputRef} onChange={this.searchTaskByVal}/>
                 </form>
             </nav>
             <NewsData list={this.state.news}/>
